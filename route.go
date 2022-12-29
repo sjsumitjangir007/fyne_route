@@ -31,14 +31,6 @@ func (r *Route) AddPage(state string, container *fyne.Container) {
 	}
 }
 
-func (r *Route) Start() {
-	for key, value := range r.pages {
-		if key == "/" {
-			r.container.Add(value.container)
-		}
-	}
-}
-
 func (r *Route) Load(path string) {
 	r.container.RemoveAll()
 	for key, value := range r.pages {
