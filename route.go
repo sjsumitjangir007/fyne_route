@@ -6,7 +6,7 @@ func init() {
 	// Initialization of route
 }
 
-// Page structure
+// Page structure with container instance
 type Page struct {
 	container *fyne.Container
 }
