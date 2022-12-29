@@ -17,7 +17,7 @@ type Route struct {
 	pages     map[string]Page
 }
 
-func (r *Route) Start() *fyne.Container {
+func (r *Route) start() *fyne.Container {
 	for key, value := range r.pages {
 		if key == "/" {
 			r.container.Add(value.container)
@@ -26,7 +26,7 @@ func (r *Route) Start() *fyne.Container {
 	return r.container
 }
 
-func (r *Route) Load(path string) {
+func (r *Route) load(path string) {
 	r.container.RemoveAll()
 	for key, value := range r.pages {
 		if key == path {
