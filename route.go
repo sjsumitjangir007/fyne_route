@@ -1,4 +1,4 @@
-package route
+package fyne_route
 
 import "fyne.io/fyne/v2"
 
