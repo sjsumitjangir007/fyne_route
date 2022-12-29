@@ -8,30 +8,30 @@ func init() {
 
 // Page structure with container instance
 type Page struct {
-	container *fyne.Container
+	Container *fyne.Container
 }
 
 // Route
 type Route struct {
-	container *fyne.Container
-	pages     map[string]Page
+	Container *fyne.Container
+	Pages     map[string]Page
 }
 
 func (r *Route) start() *fyne.Container {
-	for key, value := range r.pages {
+	for key, value := range r.Pages {
 		if key == "/" {
-			r.container.Add(value.container)
+			r.Container.Add(value.Container)
 		}
 	}
-	return r.container
+	return r.Container
 }
 
 func (r *Route) load(path string) {
-	r.container.RemoveAll()
-	for key, value := range r.pages {
+	r.Container.RemoveAll()
+	for key, value := range r.Pages {
 		if key == path {
-			r.container.Add(value.container)
+			r.Container.Add(value.Container)
 		}
 	}
-	r.container.Refresh()
+	r.Container.Refresh()
 }
