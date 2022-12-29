@@ -13,25 +13,29 @@ type Page struct {
 
 // Route
 type Route struct {
-	Container *fyne.Container
+	container *fyne.Container
 	Pages     map[string]Page
 }
 
-func (r *Route) Start() *fyne.Container {
+func (r *Route) SetContainer(container *fyne.Container) *fyne.Container {
+	r.container = container
+	return r.container
+}
+
+func (r *Route) Start() {
 	for key, value := range r.Pages {
 		if key == "/" {
-			r.Container.Add(value.Container)
+			r.container.Add(value.Container)
 		}
 	}
-	return r.Container
 }
 
 func (r *Route) Load(path string) {
-	r.Container.RemoveAll()
+	r.container.RemoveAll()
 	for key, value := range r.Pages {
 		if key == path {
-			r.Container.Add(value.Container)
+			r.container.Add(value.Container)
 		}
 	}
-	r.Container.Refresh()
+	r.container.Refresh()
 }
